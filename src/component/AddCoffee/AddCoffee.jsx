@@ -1,5 +1,8 @@
+import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
+  
+
     const handleSubmit = (event)=>{
         event.preventDefault();
         const form = event.target;
@@ -21,14 +24,30 @@ const AddCoffee = () => {
             },
             body: JSON.stringify(newCoffee)
         })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`Server error: ${res.status}`);
-            }
-            return res.json();
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          if(data.insertedId){
+            Swal.fire({
+              title: "success",
+              text: "You clicked the button!",
+              icon: "success"
+            });
+          }
         })
-        .then(data => console.log(data))
-        .catch(error => console.error('Fetch error:', error));
+       
+
+        // .catch(error => {
+        //   console.log(error);
+        //   if(data.insertedId){
+        //     Swal.fire({
+        //       title: "success",
+        //       text: "You clicked the button!",
+        //       icon: "success"
+        //     });
+        //   }
+        // })
+
 
     }
   return (
