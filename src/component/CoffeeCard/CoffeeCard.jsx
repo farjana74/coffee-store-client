@@ -54,7 +54,7 @@ const CoffeeCard = ({ coffee }) => {
         </div>
         <div className="card-actions justify-end">
           <button className="btn btn-[#D2B48C]">VIEW</button>
-          <button className="btn btn-orange-500">UPDATE</button>
+         <Link to = {`updateCoffee/${_id}`}> <button className="btn btn-orange-500">UPDATE</button></Link>
           <button
             onClick={() => handleDelete(_id)}
             className="btn bg-orange-500 text-white"
